@@ -4,16 +4,13 @@ import yellow from '@material-ui/core/colors/yellow';
 import Grid from '@material-ui/core/Grid';
 import img from './defaultAvatar.svg';
 
-
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name:"",
-      email: "",
       message: "",
       nameError:"",
-      emailError:"",
       messageError:"",
 
     };
@@ -22,12 +19,21 @@ class Form extends Component {
     this.sendmessage=this.sendmessage.bind(this);
     this.handleimage=this.handleimage.bind(this);
     this.state={showNotification:false};
+    this.state={changeAvatar:false}
     this.state = {file: img};
   }
 
+  abbreviation() {
+    var x = this.state.name.split(' ');
+    if(x.length===1)
+    return x[0].charAt(0).toUpperCase();
+
+
+    return x[0].charAt(0).toUpperCase()+x[1].charAt(0).toUpperCase();
+  };
+
   validate(){
     let nameError = "";
-    let emailError = "";
     let messageError = "";
 
     if (!this.state.name) {
@@ -38,15 +44,9 @@ class Form extends Component {
       messageError = 'Message cannot be empty'
     }
 
-    if (!this.state.email.includes('@')) {
-      emailError = 'Invalid email';
-    }
-
-
-    if (nameError || emailError || messageError) {
+    if (nameError || messageError) {
       this.setState({
         nameError,
-        emailError,
         messageError
       });
       return false;
@@ -69,6 +69,7 @@ class Form extends Component {
         alert("Incorrect file format or size. Upload JPEG or PNG file (5Mb Max)");
       }
     }
+
     this.setState({
       showdefAvatar:true,    
     })    
@@ -82,7 +83,7 @@ class Form extends Component {
 
 
   sendmessage(event) {
-    const { name,  email, message } = this.state;
+    const { name, message } = this.state;
 
     const isValid=this.validate();
 
@@ -91,13 +92,19 @@ class Form extends Component {
         showNotification: true
         
       })
-      console.log(`${name}, ${email}, ${message}`);
+      console.log(`${name}, ${message}`);
+
+      if(this.state.file===img){
+        this.setState({
+          changeAvatar:true
+        })
+      }
     }
     event.preventDefault();
   }
 
   render() {
-    const { name,email, message} = this.state;
+    const { name, message} = this.state;
 
     return (
       <div className="section is-fullheight">
@@ -106,7 +113,13 @@ class Form extends Component {
           <div className="box" style={Container.dims}>
           <div>
           <input type="file" onChange={this.handleimage}/>
+          {this.state.changeAvatar?
+           <Grid container justify="center" alignItems="center">
+           <Avatar style={Container.yellowAvatarAfter}>{this.abbreviation()}</Avatar>
+         </Grid>
+          :
           <img src={this.state.file} style={Container.image} alt="avatar"/>
+          }
           </div> 
             <form onSubmit={this.sendmessage}>
                 <div className="field">
@@ -114,13 +127,6 @@ class Form extends Component {
                 <div className="form-control">
                   <input className="input" type="inputType" name="name" onChange={this.handleChange} value={name || ''} required />
                   <div style={{color:"red"}}>{this.state.nameError}</div>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">Email Address</label>
-                <div className="form-control">
-                  <input className="input" type="email" name="email" onChange={this.handleChange} value={email || ''} required />
-                  <div style={{color:"red"}}>{this.state.emailError}</div>
                 </div>
               </div>
               <div className="field">
@@ -148,7 +154,7 @@ class Form extends Component {
                       </div> 
                       :
                       <Grid container justify="center" alignItems="center">
-                      <Avatar style={Container.yellowAvatar}>{this.state.name.match(/\b(\w)/g).join('')}</Avatar>
+                      <Avatar style={Container.yellowAvatar}>{this.abbreviation()}</Avatar>
                     </Grid>
                       }
 
@@ -178,6 +184,10 @@ class Form extends Component {
 const Container ={
   dims: {
       maxwidth:768,   
+     // maxHeight:1024,
+     /*  maxHeight:1024,
+      minWidth:640,
+      minHeight:1136, */
     },
 
   alignment:{
@@ -203,8 +213,9 @@ const Container ={
   },
 
   image:{
-    height:120,
+    height:100,
     width:100,
+    borderRadius:50,
   },
 
   imageafter:{
@@ -213,7 +224,16 @@ const Container ={
     height:50,
     width:50,
     borderRadius:50,
-  }
+  },
+
+  yellowAvatarAfter:{
+    margin: 12,
+    color: '#fff',
+    backgroundColor: yellow[500],
+    height:100,
+    width:100,
+    fontSize:50,
+  },
 }
 
 
