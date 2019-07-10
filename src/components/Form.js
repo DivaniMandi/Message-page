@@ -3,6 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import yellow from '@material-ui/core/colors/yellow';
 import Grid from '@material-ui/core/Grid';
 import img from './defaultAvatar.svg';
+import './Form.css';
 
 class Form extends Component {
   constructor(props) {
@@ -181,17 +182,13 @@ class Form extends Component {
   }
 }
 
-const Container ={
+const Container = {
   dims: {
       maxwidth:768,   
-     // maxHeight:1024,
-     /*  maxHeight:1024,
-      minWidth:640,
-      minHeight:1136, */
     },
 
   alignment:{
-    paddingLeft:220,
+   paddingLeft:220,
   },
 
   dimensions: {
@@ -235,7 +232,6 @@ const Container ={
     fontSize:50,
   },
 }
-
 
 
 export default Form;

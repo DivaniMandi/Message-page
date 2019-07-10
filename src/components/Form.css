@@ -1,0 +1,15 @@
+ .container {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   max-width: 768px;
+   min-width: 640px;
+   width: 100%;
+ }
+
+ .align-items-center {
+   max-width: 1094px;
+   min-width: 446px;
+   align-content: left;
+ }
+
