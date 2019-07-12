@@ -145,7 +145,7 @@ class Form extends Component {
       </div>
       {
           this.state.showNotification ?          
-           <div className style={Container.alignment}>
+           <div style={Container.alignment}>
               <div className="align-items-center">
                 <div className="media">
                   <div className="media-left">
@@ -190,7 +190,9 @@ const Container = {
     },
 
   alignment:{
-   //paddingLeft:100,
+   display:'flex',
+   alignItems:'center',
+   justifyContent:'center',
   },
 
   styles:{
