@@ -62,6 +62,7 @@ class Form extends Component {
         (event.target.files[0].type === "image/jpeg" || event.target.files[0].type === "image/png")) {
         this.setState({
           showdefAvatar:false,
+          changeAvatar:false,
           file:
             URL.createObjectURL(event.target.files[0])
         })
@@ -144,8 +145,8 @@ class Form extends Component {
       </div>
       {
           this.state.showNotification ?          
-            <div style={Container.alignment}>
-              <div className="align-items-center" style={Container.dimensions}>
+           <div className style={Container.alignment}>
+              <div className="align-items-center">
                 <div className="media">
                   <div className="media-left">
                     <figure>
@@ -185,18 +186,11 @@ class Form extends Component {
 const Container = {
   dims: {
       maxwidth:768,   
+      width:'100%',
     },
 
   alignment:{
-   paddingLeft:220,
-  },
-
-  dimensions: {
-    radius:12,
-    width:821, 
-    height:65,
-    boxShadow: '0 5px 16px 0px',
-    backgroundColor:'#fff',  
+   //paddingLeft:100,
   },
 
   styles:{

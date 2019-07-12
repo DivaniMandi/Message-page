@@ -3,13 +3,30 @@
    flex-flow: row wrap;
    align-items: center;
    max-width: 768px;
-   min-width: 640px;
+   min-width: 500px;
    width: 100%;
  }
 
  .align-items-center {
-   max-width: 1094px;
-   min-width: 446px;
-   align-content: left;
+  display: flex;
+  flex-flow: row wrap;
+  width:100%;
+  max-width: 768px;
+  min-width: 447px;
+  box-shadow: 0 5px 16px 0px;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  border-radius: 16px;
+
  }
+
+ .section is-fullheight{
+   width:100%;
+   max-width: 768px;
+   min-width: 640px;
+ }
+
+
+
+ 
 
