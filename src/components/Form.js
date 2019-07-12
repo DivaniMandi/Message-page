@@ -112,7 +112,7 @@ class Form extends Component {
       <div className="section is-fullheight">
       <div className="container">
         <div className="column is-4 is-offset-4">
-          <div className="box" style={Container.dims}>
+          <div className="box">
           <div>
           <input type="file" onChange={this.handleimage}/>
           {this.state.changeAvatar?
@@ -162,7 +162,7 @@ class Form extends Component {
 
                     </figure>
                   </div>
-                  <div className="media-content" style={Container.styles}>
+                  <div className="media-content">
                     <div className="content">
                       <p>
                         <strong>{this.state.name}</strong>
@@ -184,19 +184,13 @@ class Form extends Component {
 }
 
 const Container = {
-  dims: {
-      maxwidth:768,   
-      width:'100%',
-    },
+
 
   alignment:{
    display:'flex',
    alignItems:'center',
    justifyContent:'center',
-  },
-
-  styles:{
-    padding:10, 
+   paddingLeft:200,
   },
 
   yellowAvatar: {

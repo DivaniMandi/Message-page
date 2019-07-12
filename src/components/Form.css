@@ -1,3 +1,8 @@
+ .box{
+   max-width: 768px;
+   width: 100%;
+ }
+
  .container {
    display: flex;
    flex-flow: row wrap;
@@ -11,13 +16,11 @@
   display: flex;
   flex-flow: row wrap;
   width:100%;
-  max-width: 1094px;
-  min-width: 447px;
+  max-width: 821px;
+  min-width: 500px;
   box-shadow: 0 5px 16px 0px;
   background-color: rgb(255, 255, 255);
-  align-items: center;
   border-radius: 16px;
-
 
  }
 
@@ -26,6 +29,12 @@
    max-width: 768px;
    min-width: 640px;
  }
+
+ .media-content{
+   padding: 10px;
+ }
+
+
 
 
 
